@@ -5,9 +5,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	let count = parseInt(num.innerHTML);
 	let breakTime = parseInt(breakNum.innerHTML);
+
+	let startBtn = document.querySelector('#start');
 	
 	let resetBtn = document.querySelector('#reset');
 	resetBtn.style.display = 'none';
+
+	startBtn.addEventListener('click', function() {
+		let counter = setInterval(timer, 1000);
+
+		function timer(){
+
+			//hide variables
+			document.querySelectorAll('#minus5Clock, #add5Clock, #minus5Break, #add5Break, #breakNum, #title1, #title2').forEach(function(element){
+				element.style.display = 'none';
+			});
+
+			document.querySelector('#timeType').innerHTML = `Session Time:`;
+			
+			count -= 1;
+			if(count === 0) {
+				clearInterval(counter);
+			}
+			num.innerHTML = count;
+		}
+		
+	});
 
 	// setting +/- 5 buttons
 
