@@ -12,12 +12,9 @@ body {
     text-align: center;
 }
 
-.box {
-    
-}
-
 a {
     text-decoration: none;
+    display: block;
 }
 
 h2 {
