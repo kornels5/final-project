@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		breakTime *= 60;
 		function timer() {
 			//hide variables
-			document.querySelectorAll('#start, #minus5Clock, #add5Clock, #minus5Break, #add5Break, #breakNum, #title1, #title2').forEach(function (element) {
+			document.querySelectorAll('#breakDiv, #start, #minus5Clock, #add5Clock, #minus5Break, #add5Break, #breakNum, #title1, #title2').forEach(function (element) {
 				element.style.display = 'none';
 			});
 
