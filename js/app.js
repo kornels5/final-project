@@ -1,101 +1,101 @@
-document.addEventListener("DOMContentLoaded", function () {
+$(function () {
 
-	let num = document.querySelector('#num');
-	let breakNum = document.querySelector('#breakNum');
+	// TIME VARIABLES
+	let timeCounter = parseInt($('#num').html()),
+		timeSeconds = timeCounter * 60;
+	let breakTime = parseInt($('#breakNum').html()),
+		breakSeconds = breakTime * 60;
 
-	let count = parseInt(num.innerHTML);
-	let breakTime = parseInt(breakNum.innerHTML);
+		let sessions = 0;
 
-	let startBtn = document.querySelector('#start');
+	//FUNCTION TO CONVERT SECONDS TO READABLE TIME
 
-	let resetBtn = document.querySelector('#reset');
-	resetBtn.style.display = 'none';
+	function humanReadableTime(seconds) {
+		minutes = Math.floor(seconds / 60);
+		if (minutes < 10) {
+			minutes = `0${minutes}`;
+		}
+		seconds %= 60;
+		if (seconds < 10) {
+			seconds = `0${seconds}`;
+		}
+		return `${minutes}:${seconds}`;
+	}
 
-	startBtn.addEventListener('click', function () {
-		let counter = setInterval(timer, 1000);
-		count *= 60;
-		breakTime *= 60;
-		function timer() {
-			//hide variables
-			document.querySelectorAll('#breakDiv, #start, #minus5Clock, #add5Clock, #minus5Break, #add5Break, #breakNum, #title1, #title2').forEach(function (element) {
-				element.style.display = 'none';
-			});
+	//TIME COUNTER FUNCTION
 
-			document.querySelector('#timeType').innerHTML = `Session Time:`;
-			document.querySelector('#timeType').style.display = 'block';
-			num.style.display = 'block';
-			count -= 1;
-
-			if (count === 0) {
-				clearInterval(counter);
-				let startBreak = setInterval(breakTimer, 1000);
-				num.style.display = 'none';
-				
-				function breakTimer() {
-					document.querySelector('#timeType').innerHTML = `Break Time:`;
-					
-					breakNum.style.display = 'block';
-					document.querySelector('#timeType').style.display = 'block';
-					breakTime -= 1;
-					if (breakTime === 0) {
-						clearInterval(startBreak);
-						resetBtn.style.display = 'block';
-						breakNum.style.display = 'none';
-						document.querySelector('#timeType').style.display = 'none';
+	function counter(num, seconds, breakseconds) {
+		
+		let counterInterval = setInterval(function () {
+			$('#titleTimer').html('Session Time');
+			num.html(humanReadableTime(seconds));
+			seconds -= 1;
+			if (seconds < 0) {
+				clearInterval(counterInterval);
+				let breakInterval = setInterval(function () {
+					$('#titleTimer').html('Break Time');
+					num.html(humanReadableTime(breakseconds));
+					breakseconds -= 1;
+					if (breakseconds < 0) {
+						clearInterval(breakInterval);
+						showElements();
 					}
-					if(breakTime %60 >= 10) {
-						breakNum.innerHTML = `${Math.floor(breakTime/60)}:${Math.floor(breakTime%60)}`;
-					} else {
-						breakNum.innerHTML = `${Math.floor(breakTime/60)}:0${Math.floor(breakTime%60)}`;
-					}
-					//breakNum.innerHTML = breakTime;
-				}
+				}, 100);
 			}
-			if(count %60 >= 10) {
-				num.innerHTML = `${Math.floor(count/60)}:${Math.floor(count%60)}`;
-			} else {
-				num.innerHTML = `${Math.floor(count/60)}:0${Math.floor(count%60)}`;
+		}, 100);
+	}
+
+	function showElements() {
+		$('#start, #reset, #breakDiv, #minus5Clock, #add5Clock, #timeDiv, #minus5Break, #add5Break').show();
+		$('#timer').hide();
+	}
+
+	// ADD/MINUS TIME BUTTONS
+
+	function timeButtons() {
+		$('#minus5Clock').click(function () {
+			if (timeSeconds > 1) {
+				timeSeconds -= 60;
+				$('#num').html(humanReadableTime(timeSeconds));
 			}
-			//num.innerHTML = count;
-		}
-	});
-
-	resetBtn.addEventListener('click', function(){
-		count = 1;
-		breakTime = 1;
-		num.innerHTML = count;
-		breakNum.innerHTML = breakTime;
-		document.querySelectorAll('#start, #minus5Clock, #add5Clock, #minus5Break, #add5Break, #num, #breakNum, #title1, #title2').forEach(function (element) {
-			element.style.display = 'block';
 		});
-		document.querySelectorAll('#timeType, #reset').forEach(function (element) {
-			element.style.display = 'none';
+		$('#add5Clock').click(function () {
+			timeSeconds += 60;
+			$('#num').html(humanReadableTime(timeSeconds));
 		});
+
+		$('#minus5Break').click(function () {
+			if (breakSeconds > 1) {
+				breakSeconds -= 60;
+				$('#breakNum').html(humanReadableTime(breakSeconds));
+			}
+		});
+		$('#add5Break').click(function () {
+			breakSeconds += 60;
+			$('#breakNum').html(humanReadableTime(breakSeconds));
+		});
+	}
+
+
+
+	//UPDATING TIME ON A FIRST RUN
+	$('#num').html(humanReadableTime(timeSeconds));
+	$('#breakNum').html(humanReadableTime(breakSeconds));
+	$('#timer').hide();
+
+	//	SETTING PLUS/MINUS BUTTONS
+
+	timeButtons();
+
+	//AFTER START
+
+	$('#start').click(function () {
+		$('#start, #reset, #breakDiv, #minus5Clock, #add5Clock, #timeDiv, #minus5Break, #add5Break').hide();
+		$('#timer').show();
+		counter($('#timerNum'), timeSeconds, breakSeconds);
+		
 	});
 
-	// setting +/- 5 buttons
 
-	document.querySelector('#minus5Clock').addEventListener('click', function () {
-		if (count > 1) {
-			count -= 1;
-			num.innerHTML = count;
-		}
-	});
 
-	document.querySelector('#add5Clock').addEventListener('click', function () {
-		count += 1;
-		num.innerHTML = count;
-	});
-
-	document.querySelector('#minus5Break').addEventListener('click', function () {
-		if (breakTime > 1) {
-			breakTime -= 1;
-			breakNum.innerHTML = breakTime;
-		}
-	});
-
-	document.querySelector('#add5Break').addEventListener('click', function () {
-		breakTime += 1;
-		breakNum.innerHTML = breakTime;
-	});
 });

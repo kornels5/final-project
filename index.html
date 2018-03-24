@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +9,34 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Pomodoro App</title>
 </head>
+
 <body>
-   <div class="container">
-       <div id="timeDiv" class="box">
-           <h1 id="title1">Session Time</h1>
-           <a href="#" id="minus5Clock">-</a>
-           <h2 id="timeType"></h2>
-           <h2 id="num">1</h2>
-           <a href="#" id="add5Clock">+</a>
-           <a href="#" class="" id="reset">Reset</a>
-       </div>
-       <div id="breakDiv" class="box">
+    <div class="container">
+        <div id="timeDiv" class="box">
+            <h1 id="title1">Session Time</h1>
+            <a href="#" id="minus5Clock">-</a>
+            <h2 id="num">1</h2>
+            <a href="#" id="add5Clock">+</a>
+            <!-- <h1>Sessions:</h1>
+            <a href="#" id="">-</a>
+            <h2 id="num">1</h2>
+            <a href="#" id="">+</a> -->
+        </div>
+        <div id="breakDiv" class="box">
             <h1 id="title1">Break Time</h1>
             <a href="#" id="minus5Break">-</a>
             <h2 id="breakNum">1</h2>
             <a href="#" id="add5Break">+</a>
-       </div>
-       <a href="#" class="" id="start">Start</a>
-   </div>
+        </div>
+        <div id="timer" class="box">
+            <h1 id="titleTimer"></h1>
+            <h2 id="timerNum"></h2>
+        </div>
+        <a href="#" class="btn" id="start">Start</a>
+        <!-- <a href="#" class="btn" id="reset">Reset</a> -->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>

@@ -22,8 +22,8 @@ h2 {
     display: inline;
 }
 
-#start {
-    margin-top: 40px;
+.btn {
+    margin-top: 20px;
     color: black;
     border: 1px solid black;
     border-radius: 25px;
@@ -34,8 +34,8 @@ h2 {
     box-shadow: 3px 3px 3px 0;
 }
 
-#start:hover,
-#start:active {
+.btn:hover,
+.btn:active {
     transform: translateY(3px);
 }
 
