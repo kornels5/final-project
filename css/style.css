@@ -1,48 +1,52 @@
-* {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
 }
 
 body {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Share Tech', sans-serif;
+    box-sizing: border-box;
 }
 
-.container {
-    text-align: center;
-    padding: 20px;
+.app {
+    width: 100vh;
+    position: relative;
 }
 
-a {
-    text-decoration: none;
-    display: inline-block;
+.fa-cog {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-size: 4rem;
+    color: orangered;
 }
 
-h2 {
-    display: inline;
+.fa-cog:hover {
+    transform: rotate(20deg);
+    cursor: pointer;
 }
 
-.btn {
-    margin-top: 20px;
-    color: black;
-    border: 1px solid black;
-    border-radius: 25px;
-    padding: 10px;
-    width: 100px;
-    text-transform: uppercase;
-    font-weight: 700;
-    box-shadow: 3px 3px 3px 0;
+#settings {
+    display: none;
+    height: 100vh;
+    float: left;
+    width: 230px;
+    border-right: 2px solid black;
+    font-size: 2rem;
+    padding: 100px 0 0 10px;
 }
 
-.btn:hover,
-.btn:active {
-    transform: translateY(3px);
-}
-
-.box {
-    border: 1px solid black;
-    width: 200px;
-    margin: 10px auto;
-    box-shadow: 5px 5px 5px 0;
-    padding: 10px;
+#pomodoro {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

@@ -1,101 +1,91 @@
-$(function () {
+$(document).ready(function () {
+  //session time
+  
+  let timeCounter = parseInt($('#workTime').html()),
+    timeSeconds = timeCounter * 60,
+    //break time
+    breakTime = parseInt($('#breakTime').html()),
+    breakSeconds = breakTime * 60,
+    //INTERVAL
+    interval = 0,
+    //CURRENTLY DISPLAYED TIME ON POMODORRO
+    currentTime = 0,
+    //CHECKS IF INTERVAL IS STILL RUNNING
+    alarm = $('#alarm')[0];
 
-	// TIME VARIABLES
-	let timeCounter = parseInt($('#num').html()),
-		timeSeconds = timeCounter * 60;
-	let breakTime = parseInt($('#breakNum').html()),
-		breakSeconds = breakTime * 60;
+  //FUNCTION TO CONVERT SECONDS TO READABLE TIME
 
-		let sessions = 0;
+  function humanReadableTime(seconds) {
+    minutes = Math.floor(seconds / 60);
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    seconds %= 60;
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
+    return `${minutes}:${seconds}`;
+  }
 
-	//FUNCTION TO CONVERT SECONDS TO READABLE TIME
+  //SETTING TIME BUTTONS
 
-	function humanReadableTime(seconds) {
-		minutes = Math.floor(seconds / 60);
-		if (minutes < 10) {
-			minutes = `0${minutes}`;
-		}
-		seconds %= 60;
-		if (seconds < 10) {
-			seconds = `0${seconds}`;
-		}
-		return `${minutes}:${seconds}`;
-	}
+  $('#minusClock').click(function () {
+    if (timeSeconds > 1) {
+      timeSeconds -= 60;
+      $('#workTime').html(humanReadableTime(timeSeconds));
+    }
+  });
+  $('#addClock').click(function () {
+    timeSeconds += 60;
+    $('#workTime').html(humanReadableTime(timeSeconds));
+  });
 
-	//TIME COUNTER FUNCTION
-
-	function counter(num, seconds, breakseconds) {
-		
-		let counterInterval = setInterval(function () {
-			$('#titleTimer').html('Session Time');
-			num.html(humanReadableTime(seconds));
-			seconds -= 1;
-			if (seconds < 0) {
-				clearInterval(counterInterval);
-				let breakInterval = setInterval(function () {
-					$('#titleTimer').html('Break Time');
-					num.html(humanReadableTime(breakseconds));
-					breakseconds -= 1;
-					if (breakseconds < 0) {
-						clearInterval(breakInterval);
-						showElements();
-					}
-				}, 100);
-			}
-		}, 100);
-	}
-
-	function showElements() {
-		$('#start, #reset, #breakDiv, #minus5Clock, #add5Clock, #timeDiv, #minus5Break, #add5Break').show();
-		$('#timer').hide();
-	}
-
-	// ADD/MINUS TIME BUTTONS
-
-	function timeButtons() {
-		$('#minus5Clock').click(function () {
-			if (timeSeconds > 1) {
-				timeSeconds -= 60;
-				$('#num').html(humanReadableTime(timeSeconds));
-			}
-		});
-		$('#add5Clock').click(function () {
-			timeSeconds += 60;
-			$('#num').html(humanReadableTime(timeSeconds));
-		});
-
-		$('#minus5Break').click(function () {
-			if (breakSeconds > 1) {
-				breakSeconds -= 60;
-				$('#breakNum').html(humanReadableTime(breakSeconds));
-			}
-		});
-		$('#add5Break').click(function () {
-			breakSeconds += 60;
-			$('#breakNum').html(humanReadableTime(breakSeconds));
-		});
-	}
+  $('#minusBreak').click(function () {
+    if (breakSeconds > 1) {
+      breakSeconds -= 60;
+      $('#breakTime').html(humanReadableTime(breakSeconds));
+    }
+  });
+  $('#addBreak').click(function () {
+    breakSeconds += 60;
+    $('#breakTime').html(humanReadableTime(breakSeconds));
+  });
 
 
+  function counter(seconds, ) {
+    interval = setInterval(function () {
+      seconds -= 1;
+      currentTime = seconds;
+      $('#timer').html(humanReadableTime(seconds));
+      if (seconds === 0) {
+        alarm.play();
+        clearInterval(interval);
+      }
+    }, 100);
+  }
 
-	//UPDATING TIME ON A FIRST RUN
-	$('#num').html(humanReadableTime(timeSeconds));
-	$('#breakNum').html(humanReadableTime(breakSeconds));
-	$('#timer').hide();
+  // POMODORO BUTTONS 
 
-	//	SETTING PLUS/MINUS BUTTONS
+  $('#pause, #resume').hide();
 
-	timeButtons();
+  $('#start').click(function () {
+    $('#settings').hide();
+    $(this).hide();
+    $('#pause, #resume').show();
+    $('#timer').html(humanReadableTime(timeSeconds));
+    counter(timeSeconds);
+  });
 
-	//AFTER START
+  $('#pause').click(function () {
+    clearInterval(interval);
+  });
 
-	$('#start').click(function () {
-		$('#start, #reset, #breakDiv, #minus5Clock, #add5Clock, #timeDiv, #minus5Break, #add5Break').hide();
-		$('#timer').show();
-		counter($('#timerNum'), timeSeconds, breakSeconds);
-		
-	});
+  $('#resume').click(function () {
+    counter(currentTime);
+  });
 
-
+  $('#toggleMenu').click(function(){
+    $('#settings').animate({width: 'toggle'});
+  });
 
 });

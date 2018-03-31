@@ -1,41 +1,41 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,700" rel="stylesheet">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <title>Pomodoro App</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="container">
-        <div id="timeDiv" class="box">
-            <h1 id="title1">Session Time</h1>
-            <a href="#" id="minus5Clock">-</a>
-            <h2 id="num">1</h2>
-            <a href="#" id="add5Clock">+</a>
-            <!-- <h1>Sessions:</h1>
-            <a href="#" id="">-</a>
-            <h2 id="num">1</h2>
-            <a href="#" id="">+</a> -->
+    <audio id="alarm" src="sound/A-Tone-His_Self-1266414414.mp3" type="audio/mpeg"></audio>
+    <div id="app">
+        <span id="toggleMenu"><i class="fas fa-cog"></i></span>
+        <div id="settings">
+            <div>
+                <span>Session Time</span>
+                <a href="#" id="minusClock">-</a>
+                <span id="workTime">00:00</span>
+                <a href="#" id="addClock">+</a>
+            </div>
+            <div>
+                <span>Break Time</span>
+                <a href="#" id="minusBreak">-</a>
+                <span id="breakTime">00:00</span>
+                <a href="#" id="addBreak">+</a>
+            </div>
         </div>
-        <div id="breakDiv" class="box">
-            <h1 id="title1">Break Time</h1>
-            <a href="#" id="minus5Break">-</a>
-            <h2 id="breakNum">1</h2>
-            <a href="#" id="add5Break">+</a>
+        <div id="pomodoro">
+            <span id="timer">00:00</span>
+            <button id="start">start</button>
+            <button id="pause">pause</button>
+            <button id="resume">resume</button>
         </div>
-        <div id="timer" class="box">
-            <h1 id="titleTimer"></h1>
-            <h2 id="timerNum"></h2>
-        </div>
-        <a href="#" class="btn" id="start">Start</a>
-        <!-- <a href="#" class="btn" id="reset">Reset</a> -->
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 
