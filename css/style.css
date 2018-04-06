@@ -13,6 +13,12 @@ html {
 body {
     font-family: 'Share Tech', sans-serif;
     box-sizing: border-box;
+    background: linear-gradient(#fff 80%, #949494);
+}
+
+a {
+    text-decoration: none;
+    color: #000;
 }
 
 .app {
@@ -33,20 +39,141 @@ body {
     cursor: pointer;
 }
 
-#settings {
+#settings,
+#session,
+#break {
     display: none;
+}
+
+#settings {
     height: 100vh;
     float: left;
     width: 230px;
     border-right: 2px solid black;
     font-size: 2rem;
-    padding: 100px 0 0 10px;
+    color: #444;
+}
+
+#session {
+    margin-top: 100px;
+}
+
+#session,
+#break {
+    text-align: center;
+    padding: 10px 0;
 }
 
 #pomodoro {
+    width: 150px;
     margin: 0 auto;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 30%;
     transform: translate(-50%, -50%);
+}
+
+#pomodoro span {
+    display: block;
+}
+
+#container {
+    font-size: 2rem;
+    width: 360px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 3px rgba(0,0,0, .5);
+}
+
+.completed {
+    color: gray;
+    text-decoration: line-through;
+}
+
+h1 {
+    background-color: orangered;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+#plus {
+    float: right;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    background-color: #fff;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+li:nth-child(2n) {
+    background-color: #f7f7f7;
+}
+
+input {
+    font-size: 18px;
+    width: 100%;
+    padding: 13px 13px 13px 20px;
+    border: 3px solid rgba(0,0,0,0);
+}
+
+input:focus {
+    background: #fff;
+    border: 3px solid orangered;
+    outline: none;
+}
+
+.remove {
+  height: 40px;
+  text-align: center;
+  transition: 0.2s linear;
+  opacity: 0;
+  padding-right: 10px;
+}
+
+li:hover span {
+    opacity: 1;
+}
+
+/* timer */
+
+#timer {
+    font-size: 7rem;
+    color: #666;
+}
+
+#title {
+    font-size: 2.5rem;
+    color: orangered;
+    
+}
+
+.btnContainer {
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    border: 0;
+    background-color: #fff;
+}
+
+.btn {
+    font-size: 5rem;
+    /* color: orangered; */
+}
+
+.btn:focus {
+    outline: none;
 }

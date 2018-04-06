@@ -14,25 +14,33 @@
     <audio id="alarm" src="sound/A-Tone-His_Self-1266414414.mp3" type="audio/mpeg"></audio>
     <div id="app">
         <span id="toggleMenu"><i class="fas fa-cog"></i></span>
+        <div id="container">
+                <h1>Task List<span id="plus"><i class="fas fa-plus"></i></span></h1>
+                <input type="text" placeholder="Add New Task">
+                <ul></ul>
+        </div>
         <div id="settings">
-            <div>
-                <span>Session Time</span>
-                <a href="#" id="minusClock">-</a>
-                <span id="workTime">00:00</span>
-                <a href="#" id="addClock">+</a>
+            <div id="session">
+                <span>Session Time</span><br>
+                <a href="#" id="minusClock"><i class="far fa-minus-square"></i></a>
+                <span id="workTime">01:00</span>
+                <a href="#" id="addClock"><i class="far fa-plus-square"></i></a>
             </div>
-            <div>
-                <span>Break Time</span>
-                <a href="#" id="minusBreak">-</a>
-                <span id="breakTime">00:00</span>
-                <a href="#" id="addBreak">+</a>
+            <div id="break">
+                <span>Break Time</span><br>
+                <a href="#" id="minusBreak"><i class="far fa-minus-square"></i></a>
+                <span id="breakTime">01:00</span>
+                <a href="#" id="addBreak"><i class="far fa-plus-square"></i></a>
             </div>
         </div>
         <div id="pomodoro">
-            <span id="timer">00:00</span>
-            <button id="start">start</button>
-            <button id="pause">pause</button>
-            <button id="resume">resume</button>
+            <span id="title">work/brake</span>
+            <span id="timer">01:00</span>
+            <div class="btnContainer">
+                <button id="start" class="btn"><i class="fas fa-play-circle"></i></button>
+                <button id="pause" class="btn"><i class="fas fa-pause-circle"></i></button>
+                <button id="resume" class="btn"><i class="fas fa-chevron-left"></i></button>
+            </div>
         </div>
     </div>
     <script src="js/jquery-3.3.1.min.js"></script>
