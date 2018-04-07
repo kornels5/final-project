@@ -22,7 +22,8 @@ a {
 }
 
 .app {
-    width: 100vh;
+    height: 100vh;
+    width: 100vw;
     position: relative;
 }
 
@@ -73,7 +74,7 @@ a {
     margin: 0 auto;
     position: absolute;
     top: 50%;
-    left: 30%;
+    left: 60%;
     transform: translate(-50%, -50%);
 }
 
@@ -87,7 +88,7 @@ a {
     margin: 0 auto;
     position: absolute;
     top: 50%;
-    left: 70%;
+    left: 35%;
     transform: translate(-50%, -50%);
     box-shadow: 0 0 3px rgba(0, 0, 0, .5);
 }

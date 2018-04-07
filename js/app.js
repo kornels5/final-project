@@ -91,7 +91,7 @@ $(document).ready(function () {
         clearInterval(interval);
         counterBreak(breakSeconds);
       }
-    }, 100);
+    }, 1000);
   }
 
   function counterBreak(seconds) {
@@ -109,7 +109,7 @@ $(document).ready(function () {
         $('#pause, #resume').hide();
         $('#title').html('work/brake');
       }
-    }, 100);
+    }, 1000);
   }
 
   // POMODORO BUTTONS 
@@ -155,7 +155,6 @@ $(document).ready(function () {
   });
 
   $('ul').on('click', '.name', function () {
-
     $('li').toggleClass('completed');
     $('#currentTask').html('');
   });
@@ -167,6 +166,7 @@ $(document).ready(function () {
 
   $('ul').on('click', 'span', function (event) {
     if ($(this).attr('class') === 'remove') {
+      $('#currentTask').html('');
       $(this).parent().fadeOut(500, function () {
         $(this).remove();
       });
@@ -178,7 +178,7 @@ $(document).ready(function () {
   });
 
   $('input[type="text"]').keypress(function (event) {
-    if (event.which === 13) {
+    if (event.which === 13 && $('ul').children().length < 6) {
       let taskName = $(this).val();
       $(this).val('');
       $('ul').append(`<li><span class="remove"><i class="fas fa-trash-alt"></i></span><span class="name">${taskName}</span><span class="addTask"><i class="fas fa-plus-circle"></i></span></li>`);
