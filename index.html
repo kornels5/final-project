@@ -4,42 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Pomodoro</title>
     <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
     <audio id="alarm" src="sound/A-Tone-His_Self-1266414414.mp3" type="audio/mpeg"></audio>
     <div id="app">
-        <span id="toggleMenu"><i class="fas fa-cog"></i></span>
+        <span id="toggleMenu">
+            <i class="fas fa-cog"></i>
+        </span>
+        <div id="quoteDisplay">
+            <span id="quote"></span>
+        </div>
+        <button id="quoteGenerator">
+            <i class="far fa-meh"></i>
+        </button>
         <div id="container">
-                <h1>Task List<span id="plus"><i class="fas fa-plus"></i></span></h1>
-                <input type="text" placeholder="Add New Task">
-                <ul></ul>
+            <h1>Task List</h1>
+            <input type="text" placeholder="Add New Task">
+            <ul></ul>
         </div>
         <div id="settings">
             <div id="session">
-                <span>Session Time</span><br>
-                <a href="#" id="minusClock"><i class="far fa-minus-square"></i></a>
+                <span>Session Time</span>
+                <br>
+                <a href="#" id="minusClock" class="btnSmall">
+                    <i class="far fa-minus-square"></i>
+                </a>
                 <span id="workTime">01:00</span>
-                <a href="#" id="addClock"><i class="far fa-plus-square"></i></a>
+                <a href="#" id="addClock" class="btnSmall">
+                    <i class="far fa-plus-square"></i>
+                </a>
             </div>
             <div id="break">
-                <span>Break Time</span><br>
-                <a href="#" id="minusBreak"><i class="far fa-minus-square"></i></a>
+                <span>Break Time</span>
+                <br>
+                <a href="#" id="minusBreak" class="btnSmall">
+                    <i class="far fa-minus-square"></i>
+                </a>
                 <span id="breakTime">01:00</span>
-                <a href="#" id="addBreak"><i class="far fa-plus-square"></i></a>
+                <a href="#" id="addBreak" class="btnSmall">
+                    <i class="far fa-plus-square"></i>
+                </a>
             </div>
         </div>
         <div id="pomodoro">
+            <span id="currentTask"></span>
             <span id="title">work/brake</span>
             <span id="timer">01:00</span>
             <div class="btnContainer">
-                <button id="start" class="btn"><i class="fas fa-play-circle"></i></button>
-                <button id="pause" class="btn"><i class="fas fa-pause-circle"></i></button>
-                <button id="resume" class="btn"><i class="fas fa-chevron-left"></i></button>
+                <button id="start" class="btn">
+                    <i class="fas fa-play-circle"></i>
+                </button>
+                <button id="pause" class="btn">
+                    <i class="fas fa-pause-circle"></i>
+                </button>
+                <button id="resume" class="btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
             </div>
         </div>
     </div>
