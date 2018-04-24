@@ -1,6 +1,14 @@
-# final-project
+# Pomodoro app
+simple pomodoro app, basic functions:
+- task list
+- countdown timer to improve your work
+- motivational quotes
 
-things to fix:
+technologies:
+- HTML
+- CSS
+- jQuery
 
--RWD,
--code refactoring
+things to improve app:
+- RWD
+- code refactoring
